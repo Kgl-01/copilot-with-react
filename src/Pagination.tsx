@@ -12,11 +12,17 @@ const Pagination: React.FC<PaginationProps> = ({
   const [page, setPage] = useState<number>(1)
 
   const goPrev = () => {
-    if (page > 1) setPage(page - 1)
+    if (page > 1) {
+      setPage(page - 1)
+      if (onPageChange) onPageChange(page - 1)
+    }
   }
 
   const goNext = () => {
-    if (page < totalPages) setPage(page + 1)
+    if (page < totalPages) {
+      setPage(page + 1)
+      if (onPageChange) onPageChange(page + 1)
+    }
   }
 
   const onSelectPage = (e: React.ChangeEvent<HTMLSelectElement>) => {
